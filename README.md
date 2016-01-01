@@ -1,5 +1,5 @@
 # Ti.Shopping
-Ti.Shopping is an example application on how to use the Ti.ApplePay module with Titanium Mobile. It requires the [Ti.ApplePay](#) module and iOS 9.
+Ti.Shopping is an example application on how to use the Ti.ApplePay module with Titanium Mobile. It requires the [Ti.ApplePay] module (Release in January 2016) and iOS 9.
 
 <img width="1094" src="http://abload.de/img/example8bjv1.png">
 
