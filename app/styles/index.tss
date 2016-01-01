@@ -1,0 +1,26 @@
+".product-image": {
+	left: 20,
+	width: 40,
+	backgroundColor: "#ccc"
+}
+
+".product-info": {
+	height: Ti.UI.SIZE,
+	left: 80,
+	top: 20,
+	bottom: 20,
+	layout: "vertical"
+}
+
+".label": {
+	left: 0
+}
+
+".product-title": {
+	top: 0
+}
+
+".product-subtitle": {
+	top: 5,
+	color: "#aaa"
+}

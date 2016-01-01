@@ -1,0 +1,18 @@
+<Alloy>
+	<NavigationWindow id="nav">
+		<Window title="TiShopping">
+			<ListView id="listView" defaultItemTemplate="ProductTemplate" onItemclick="openDetails">
+				<Templates>
+					<ItemTemplate name="ProductTemplate">
+						<ImageView bindId="image" class="product-image" />
+						<View class="product-info">
+							<Label bindId="title" class="label product-title" />
+							<Label bindId="subtitle" class="label product-subtitle" />
+						</View>
+					</ItemTemplate>
+				</Templates>
+				<ListSection id="listSection" />
+			</ListView>
+		</Window>
+	</NavigationWindow>
+</Alloy>

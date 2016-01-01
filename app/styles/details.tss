@@ -1,0 +1,31 @@
+"#window": {
+	layout: "vertical"
+}
+
+"#image": {
+	top: 0,
+	width: Ti.UI.FILL
+}
+
+".caption": {
+	height: 50,
+	backgroundColor: "#efefef"
+}
+
+".label": {
+	font: {
+		fontSize: 14
+	}
+}
+
+"#title": {
+	left: 20	
+}
+
+"#price": {
+	right: 20,
+	color: "#aaa",
+	font: {
+		fontWeight: "bold"
+	}
+}

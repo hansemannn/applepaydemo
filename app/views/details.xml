@@ -1,0 +1,9 @@
+<Alloy>
+	<Window id="window">
+		<ImageView id="image" />
+		<View class="caption">
+			<Label class="label" id="title" />
+			<Label class="label" id="price" />
+		</View>
+	</Window>
+</Alloy>
