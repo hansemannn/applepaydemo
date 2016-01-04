@@ -5,10 +5,10 @@ var ApplePay,
  * Constructor
  */
 (function constructor(_product) {
-	
+
 	product = _product;
-	
-	configureApplePay();
+	ApplePay = require("ti.applepay");
+
 	setUI();
 })(arguments[0] || {});
 
@@ -19,15 +19,6 @@ function setUI() {
 	$.price.setText("$ " + parseFloat(product.price).toFixed(2));
 
 	$.window.add(createApplePayButton());
-}
-
-function configureApplePay() {
-	ApplePay = require("ti.applepay");
-
-	ApplePay.setupPaymentGateway({
-		name : ApplePay.PAYMENT_GATEWAY_STRIPE,
-		apiKey : "<YOUR_STRIPE_API_KEY>"
-	});
 }
 
 function createApplePayButton() {
@@ -43,7 +34,7 @@ function createApplePayButton() {
 
 function showPaymentDialog() {
 	var PaymentHandler = require("PaymentHandler");
-	
+
 	PaymentHandler.setProduct(product);
 	PaymentHandler.setInstance(ApplePay);
 	PaymentHandler.process(function(e) {

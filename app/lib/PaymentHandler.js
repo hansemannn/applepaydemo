@@ -2,16 +2,32 @@ var ApplePay,
     product,
     paymentDialog,
     paymentRequest,
-    cb;
+    cb,
+    API_KEY,
+    MERCHANT_ID,
+    COUNTRY_CODE,
+    CURRENCY_CODE;
+
+(function constructor() {
+    API_KEY = "<YOUR_STRIPE_API_KEY>";
+    MERCHANT_ID = "merchant.de.hansknoechel.paydemo.stripe";
+    COUNTRY_CODE =  "US";
+    CURRENCY_CODE = "USD";
+}());
 
 exports.setInstance = function(_ApplePay) {
 	ApplePay = _ApplePay;
 
+    ApplePay.setupPaymentGateway({
+        name : ApplePay.PAYMENT_GATEWAY_STRIPE,
+        apiKey : API_KEY
+    });
+
 	paymentRequest = ApplePay.createPaymentRequest({
-		merchantIdentifier : "merchant.de.hansknoechel.paydemo.stripe",
+		merchantIdentifier : MERCHANT_ID,
 		merchantCapabilities : ApplePay.MERCHANT_CAPABILITY_3DS | ApplePay.MERCHANT_CAPABILITY_CREDIT | ApplePay.MERCHANT_CAPABILITY_DEBIT | ApplePay.MERCHANT_CAPABILITY_EMV,
-		countryCode : "US",
-		currencyCode : "USD",
+		countryCode : COUNTRY_CODE,
+		currencyCode : CURRENCY_CODE,
 		supportedNetworks : [ApplePay.PAYMENT_NETWORK_VISA, ApplePay.PAYMENT_NETWORK_MASTERCARD],
 		requiredShippingAddressFields : ApplePay.ADDRESS_FIELD_POSTAL_ADDRESS,
 		requiredBillingAddressFields : ApplePay.ADDRESS_FIELD_POSTAL_ADDRESS,
@@ -40,7 +56,7 @@ exports.setProduct = function(_product) {
 exports.process = function(_cb) {
 	var items = [];
 	var shippingMethods = [];
-	
+
 	if (product == null) {
 		Ti.API.error("No product set. Use setProduct() before calling process().");
 		return;
@@ -73,12 +89,12 @@ exports.process = function(_cb) {
 		description : "1-2 working days",
 		price : 10.0
 	}));
-	
+
 	cb = _cb;
 
 	paymentRequest.setSummaryItems(items);
 	paymentRequest.setShippingMethods(shippingMethods);
-		
+
 	paymentDialog.show();
 };
 
@@ -120,7 +136,7 @@ function didAuthorizePayment(e) {
 	// Send the encrypted payment data to your backend and send the completion handler afterwards.
 	Ti.API.info("Payment successfully authorized: " + e.success);
 	e.handler.complete(ApplePay.PAYMENT_AUTHORIZATION_STATUS_SUCCESS);
-	
+
 	// Provide the callback back to the main application
 	cb(e);
 }
