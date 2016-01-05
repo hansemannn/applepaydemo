@@ -22,6 +22,17 @@ function setUI() {
 }
 
 function createApplePayButton() {
+    if (!ApplePay.canMakePayments()) {
+        return Ti.UI.createLabel({
+			text: "This device cannot make payments using Apple Pay.",
+			left: 20,
+			right: 20,
+			top: 50,
+			textAlign: "center",
+			color: "#aaa"
+		});
+    }
+
 	var btn = ApplePay.createPaymentButton({
 		type : ApplePay.PAYMENT_BUTTON_TYPE_BUY,
 		style : ApplePay.PAYMENT_BUTTON_STYLE_WHITE_OUTLINE,
