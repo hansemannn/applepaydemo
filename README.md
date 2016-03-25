@@ -7,8 +7,7 @@ Ti.Shopping is an example application on how to use the Ti.ApplePay module with 
 
 ### Via Appcelerator Studio
 
-* Import it via *Dashboard* if available.
-* Or import it via *File > Import... > Git > Git Repository as New Project*
+* Import it via *File > Import... > Git > Git Repository as New Project*
 	* Select *URI* and enter:
 
 			https://github.com/hansemannn/applepaydemo
