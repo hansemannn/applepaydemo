@@ -9,3 +9,5 @@ tmp
 .settings
 Thumbs.db
 modules
+/i18n
+/platform
