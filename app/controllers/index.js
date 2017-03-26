@@ -13,16 +13,16 @@ function displayProducts() {
 	var items = [];
 
 	var products = [{
-		identifier : "imac27",
-		title : "iMac 27\"",
+		identifier : 'imac27',
+		title : 'iMac 27"',
 		price : 1799
 	},{
-		identifier : "iphone6s",
-		title : "iPhone 6S",
+		identifier : 'iphone6s',
+		title : 'iPhone 6S',
 		price : 649
 	},{
-		identifier : "watchsport",
-		title : "Apple Watch Sport",
+		identifier : 'watchsport',
+		title : 'Apple Watch Sport',
 		price : 399
 	}];
 
@@ -34,13 +34,13 @@ function displayProducts() {
 				height : Ti.UI.SIZE
 			},
 			image : {
-				image : "/images/products/" + product.identifier + ".jpg"
+				image : '/images/products/' + product.identifier + '.jpg'
 			},
 			title : {
 				text : product.title
 			},
 			subtitle : {
-				text : "$ " + parseFloat(product.price).toFixed(2)
+				text : '$ ' + parseFloat(product.price).toFixed(2)
 			}
 		});		
 	});
@@ -55,6 +55,6 @@ function displayProducts() {
  * Opens the details page of the selected product
  */
 function openDetails(e) {
-	var details = Alloy.createController("details", e.section.getItemAt(e.itemIndex).data);
+	var details = Alloy.createController('details', e.section.getItemAt(e.itemIndex).data);
 	$.nav.openWindow(details.getView());	
 }

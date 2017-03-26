@@ -9,10 +9,10 @@ var ApplePay,
     CURRENCY_CODE;
 
 (function constructor() {
-    API_KEY = "<YOUR_STRIPE_API_KEY>";
-    MERCHANT_ID = "merchant.de.hansknoechel.paydemo.stripe";
-    COUNTRY_CODE =  "US";
-    CURRENCY_CODE = "USD";
+    API_KEY = '<YOUR_STRIPE_API_KEY>';
+    MERCHANT_ID = 'merchant.de.hansknoechel.paydemo.stripe';
+    COUNTRY_CODE =  'US';
+    CURRENCY_CODE = 'USD';
 }());
 
 exports.setInstance = function(_ApplePay) {
@@ -33,7 +33,7 @@ exports.setInstance = function(_ApplePay) {
 		requiredBillingAddressFields : ApplePay.ADDRESS_FIELD_POSTAL_ADDRESS,
 		shippingType : ApplePay.SHIPPING_TYPE_DELIVERY,
 		applicationData : {
-			"userId" : 1337
+			'userId' : 1337
 		}
 	});
 
@@ -41,12 +41,12 @@ exports.setInstance = function(_ApplePay) {
 		paymentRequest : paymentRequest
 	});
 
-	paymentDialog.addEventListener("didSelectPayment", didSelectPayment);
-	paymentDialog.addEventListener("didSelectShippingContact", didSelectShippingContact);
-	paymentDialog.addEventListener("didSelectShippingMethod", didSelectShippingMethod);
-	paymentDialog.addEventListener("willAuthorizePayment", willAuthorizePayment);
-	paymentDialog.addEventListener("didAuthorizePayment", didAuthorizePayment);
-	paymentDialog.addEventListener("close", willClose);
+	paymentDialog.addEventListener('didSelectPayment', didSelectPayment);
+	paymentDialog.addEventListener('didSelectShippingContact', didSelectShippingContact);
+	paymentDialog.addEventListener('didSelectShippingMethod', didSelectShippingMethod);
+	paymentDialog.addEventListener('willAuthorizePayment', willAuthorizePayment);
+	paymentDialog.addEventListener('didAuthorizePayment', didAuthorizePayment);
+	paymentDialog.addEventListener('close', willClose);
 };
 
 exports.setProduct = function(_product) {
@@ -58,7 +58,7 @@ exports.process = function(_cb) {
 	var shippingMethods = [];
 
 	if (product == null) {
-		Ti.API.error("No product set. Use setProduct() before calling process().");
+		Ti.API.error('No product set. Use setProduct() before calling process().');
 		return;
 	}
 
@@ -71,22 +71,22 @@ exports.process = function(_cb) {
 
 	items.push(ApplePay.createSummaryItem({
 		itemType : ApplePay.PAYMENT_SUMMARY_ITEM_TYPE_FINAL,
-		title : "Your Company",
+		title : 'Your Company',
 		price : product.price
 	}));
 
 	// Shipping
 	shippingMethods.push(ApplePay.createShippingMethod({
-		identifier : "free_shipping",
-		title : "Free Shipping",
-		description : "3-5 working days",
+		identifier : 'free_shipping',
+		title : 'Free Shipping',
+		description : '3-5 working days',
 		price : 0.0
 	}));
 
 	shippingMethods.push(ApplePay.createShippingMethod({
-		identifier : "express_shipping",
-		title : "Express Shipping",
-		description : "1-2 working days",
+		identifier : 'express_shipping',
+		title : 'Express Shipping',
+		description : '1-2 working days',
 		price : 10.0
 	}));
 
@@ -118,7 +118,7 @@ function didSelectShippingMethod(e) {
 
 	 summaryItems.push(ApplePay.createSummaryItem({
 	 itemType: ApplePay.PAYMENT_SUMMARY_ITEM_TYPE_FINAL,
-	 title: "Extra Fee",
+	 title: 'Extra Fee',
 	 price: 13.37
 	 }));
 	 paymentRequest.setSummaryItems(summaryItems);
@@ -134,7 +134,7 @@ function willAuthorizePayment() {
 function didAuthorizePayment(e) {
 
 	// Send the encrypted payment data to your backend and send the completion handler afterwards.
-	Ti.API.info("Payment successfully authorized: " + e.success);
+	Ti.API.info('Payment successfully authorized: ' + e.success);
 	e.handler.complete(ApplePay.PAYMENT_AUTHORIZATION_STATUS_SUCCESS);
 
 	// Provide the callback back to the main application
